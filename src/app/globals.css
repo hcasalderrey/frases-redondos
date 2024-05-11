@@ -16,14 +16,24 @@
   }
 }
 
-body {
+body {  
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /*background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb));*/
+
+    background-image: url('/images/redondos1.jpg');
+    
+    background-attachment: fixed;
+    background-size: cover;
+background-repeat: no-repeat; 
+
+    min-height: 100vh;
+    min-width: 100vw; 
+
 }
 
 @layer utilities {
