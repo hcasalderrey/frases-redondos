@@ -1,8 +1,11 @@
 "use client";
+import { Kablammo } from "next/font/google";
 import { useEffect, useState } from "react";
 
 import { Reload } from "./reload";
 
+
+const kablammo = Kablammo({ subsets: ["latin"] });
 interface FraseResponse {
   id: number;
   frase: string;
@@ -12,7 +15,7 @@ interface FraseResponse {
 }
 
 async function getApiFrases() {
-  const res = await fetch("http://localhost:3000/data/db.json");
+  const res = await fetch("./data/db.json");
   const json = await res.json();
   const frases = json[Math.floor(Math.random() * json.length)];
 
@@ -38,29 +41,27 @@ export default function Frase() {
     onHandler();
   }, []);
 
-
- 
   return (
-    <div className="backdrop-blur-sm rounded-lg bg-white/10 p-4">
-      <h1 className="text-5xl font-bold text-center text-gray-300 drop-shadow-xl">
-        Frases Redondos
+    <div className="backdrop-blur-sm  rounded-lg bg-white/50 p-4">
+      <h1 className="text-5xl font-bold text-center text-gray-800 drop-shadow-xl" >
+       <span className={kablammo.className}>Frases Redondos</span>  
       </h1>
-      <button onClick={onHandler} className="text-blue-300 text-center">
+      <button onClick={onHandler} className="text-gray-800 font-extrabold text-center hover:animate-pulse transition-all">
         <Reload />
       </button>
 
-      <pre className="text-2xl  text-blue-300 drop-shadow-xl tracking-wider text-pretty italic font-black">
+      <p className="text-2xl  text-blue-700 drop-shadow-xl tracking-wider text-pretty italic font-black">
         &#34;{data.frase} &#34;
-      </pre>
+      </p>
 
-      <pre className="text-xl font-extrabold  text-blue-300 drop-shadow-xl tracking-wider uppercase">
+      <p className="flex justify-center  text-xl font-extrabold  text-orange-900 drop-shadow-xl tracking-wider uppercase m-2">
         {data.tema}
-      </pre>
+      </p>
 
-      <p className="text-lg font-extrabold  text-blue-300 drop-shadow-xl tracking-wider text-left">
+      <p className="flex justify-end text-lg font-extrabold  text-blue-700  drop-shadow-xl tracking-wider m-2">
         {data.disco}
       </p>
-      <div className=" w-full aspect-w-16 aspect-h-9">
+      <div className="flex w-full aspect-video justify-center items-center">
         <iframe
           width="780"
           height="560"

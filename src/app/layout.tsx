@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Kablammo } from "next/font/google";
+
+import { Fira_Sans } from "next/font/google";
+
 import "./globals.css";
 
-const kablammo = Kablammo({ subsets: ["latin"] });
+
+const inter = Fira_Sans( {
+    subsets: ["latin"],
+    weight: ["200", "300","400", "500", "600","700", "800", "900"],});
+
 
 export const metadata: Metadata = {
   title: "Frases Redondos",
@@ -16,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={kablammo.className}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
